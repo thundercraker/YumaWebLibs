@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Reflection;
 
 /* Created by Yumashish Subba
- * I cannot be bothered to make a license, please just drop my name in there somewhere
- * so that the next unfortunate soul who has to read through our (or my, if you're that good) god awful code can know exactly
- * who messed up their day.
- * 
- * IT WAS ME.
- */ 
-namespace YumaJsonLib {
+* I cannot be bothered to make a license, please just drop my name in there somewhere
+* so that the next unfortunate soul who has to read through our (or my, if you're that good) god awful code can know exactly
+* who messed up their day.
+* 
+* IT WAS ME.
+*/ 
+
+namespace YumaWebLib.Json {
 	public class JsonObject {
 		public static bool BE_QUIET = false;
 
@@ -22,29 +23,29 @@ namespace YumaJsonLib {
 
 		public class DemoJsonObject
 		{
-			[YJSKey()]
+			[YWLKey()]
 			public int id;
 
-			[YJSKey()]
+			[YWLKey()]
 			public string name;
 
-			[YJSKey("ListAddr")]
+			[YWLKey("ListAddr")]
 			public List<string> list;
 
-			[YJSKey("InnerObject")]
+			[YWLKey("InnerObject")]
 			public InnerObject obj;
 
 			public class InnerObject
 			{
-				[YJSKey()]
+				[YWLKey()]
 				public int id;
 
-				[YJSKey()]
+				[YWLKey()]
 				public List<WeHaveToGoDeeper> chinkystare;
 
 				public class WeHaveToGoDeeper
 				{
-					[YJSKey()]
+					[YWLKey()]
 					public double french_horn;
 				}
 			}
@@ -52,26 +53,29 @@ namespace YumaJsonLib {
 			
 		public class ListDemoJsonObject {
 
-			[YJSKey()]
+			[YWLKey("id")]
 			public int _id;
 
-			[YJSKey()]
+			[YWLKey()]
 			public int uid;
 
-			[YJSKey("public")]
+			[YWLKey("public")]
 			public int isPublic;
 
-			[YJSKey()]
+			[YWLKey()]
 			public string name;
 
-			[YJSKey()]
+			[YWLKey()]
 			public string creation_date;
 
-			[YJSKey()]
+			[YWLKey()]
 			public string start_code;
 
-			[YJSKey()]
+			[YWLKey()]
 			public string run_code;
+
+			[YWLKey()]
+			public string data;
 
 		}
 
@@ -99,9 +103,9 @@ namespace YumaJsonLib {
 			bool isKey = false;
 			Attribute[] attrs = Attribute.GetCustomAttributes (field);
 			foreach (Attribute attr in attrs) {
-				if(attr is YJSKey) {
+				if(attr is YWLKey) {
 					isKey = true;
-					YJSKey key = (YJSKey) attr;
+					YWLKey key = (YWLKey) attr;
 					if(key.name.Length > 0) {
 						fieldName = key.name;
 						break;
@@ -191,9 +195,9 @@ namespace YumaJsonLib {
 			bool isKey = false;
 			Attribute[] attrs = Attribute.GetCustomAttributes (field);
 			foreach (Attribute attr in attrs) {
-				if(attr is YJSKey) {
+				if(attr is YWLKey) {
 					isKey = true;
-					YJSKey key = (YJSKey) attr;
+					YWLKey key = (YWLKey) attr;
 					if(key.name.Length > 0) {
 						fieldName = key.name;
 						break;
