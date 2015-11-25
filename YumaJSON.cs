@@ -13,8 +13,7 @@ using System.Reflection;
 */ 
 
 namespace YumaWebLib.Json {
-	public class JsonObject {
-		public static bool BE_QUIET = false;
+	public class JsonObject : SilenceableLoggingObject {
 
 		JsonObject() {
 			Log ("You can disable log messages by setting the bool value BE_QUIET to true");
@@ -322,11 +321,6 @@ namespace YumaWebLib.Json {
 			default:
 				return false;
 			}
-		}
-
-		public static void Log(string m) {
-			if(!BE_QUIET)
-				Console.WriteLine (m);
 		}
 	}
 }

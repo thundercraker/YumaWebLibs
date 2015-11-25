@@ -4,14 +4,9 @@ using System.Reflection;
 
 namespace YumaWebLib.Http
 {
-	public class GetRequest
+	public class GetRequest : ParameterizedRequest
 	{
-		Dictionary<string, object> parameters;
-
-		GetRequest ()
-		{
-			parameters = new Dictionary<string, object> ();
-		}
+		GetRequest() : base() {}
 
 		GetRequest (object requestObject) {
 			parameters = new Dictionary<string, object> ();
@@ -35,17 +30,17 @@ namespace YumaWebLib.Http
 			}
 		}
 
-		public static GetRequest GetRequestBuilder() {
+		public new static GetRequest RequestBuilder() {
 			return new GetRequest ();
 		}
 
-		public static GetRequest GetRequestBuilder(object requestObject) {
+		public static GetRequest RequestBuilder(object requestObject) {
 			return new GetRequest (requestObject);
 		}
 
-		public GetRequest AddParam(string name, object value) {
-			parameters.Add (name, value);
-			return this;
+		public override GetRequest AddParam (string key, object value)
+		{
+			return (GetRequest) base.AddParam (key, value);
 		}
 
 		public string GetRequestString() {
@@ -58,13 +53,6 @@ namespace YumaWebLib.Http
 			}
 			req = (req.Length > 0) ? req.Substring(0, req.Length - 2) : req;
 			return req;
-		}
-
-		public static bool BE_QUIET = false;
-
-		public static void Log(string m) {
-			if(!BE_QUIET)
-				Console.WriteLine (m);
 		}
 	}
 

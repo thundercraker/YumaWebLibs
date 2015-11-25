@@ -23,7 +23,7 @@ class MainClass
 	}
 
 	public static void GETDemo() {
-		string request = GetRequest.GetRequestBuilder ()
+		string request = GetRequest.RequestBuilder ()
 			.AddParam ("name", "yumashish")
 			.AddParam ("lastname", "subba")
 			.AddParam ("password", "gaga2014")
