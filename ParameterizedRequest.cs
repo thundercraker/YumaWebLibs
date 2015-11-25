@@ -15,7 +15,7 @@ namespace YumaWebLib
 			return new ParameterizedRequest ();
 		}
 
-		public virtual ParameterizedRequest AddParam(string key, object value) {
+		protected ParameterizedRequest AddParam(string key, object value) {
 			parameters.Add (key, value);
 			return this;
 		}

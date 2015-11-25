@@ -1,11 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace YumaJsonLib
+namespace YumaWebLib.Http
 {
-	public class YumaPOST
+	public class PostRequest : ParameterizedRequest
 	{
-		public YumaPOST ()
+		public PostRequest() : base () {}
+
+		public new static PostRequest RequestBuilder() {
+			return new PostRequest ();
+		}
+
+		public new PostRequest AddParam (string key, object value)
 		{
+			return (PostRequest) base.AddParam (key, value);
 		}
 	}
 }

@@ -38,7 +38,7 @@ namespace YumaWebLib.Http
 			return new GetRequest (requestObject);
 		}
 
-		public override GetRequest AddParam (string key, object value)
+		public new GetRequest AddParam (string key, object value)
 		{
 			return (GetRequest) base.AddParam (key, value);
 		}
