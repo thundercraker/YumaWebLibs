@@ -26,7 +26,8 @@ namespace YumaWebLib.Http
 					}
 				}
 				if (isKey)
-					parameters.Add (fieldName, field.GetValue (requestObject));
+					if(field.GetValue (requestObject) != null)
+						parameters.Add (fieldName, field.GetValue (requestObject));
 			}
 		}
 
